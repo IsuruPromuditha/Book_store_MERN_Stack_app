@@ -33,7 +33,7 @@ export const AuthProvider = ({children}) => {
         return signOut(auth)
     }
 
-    //mange user
+    //manage user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
