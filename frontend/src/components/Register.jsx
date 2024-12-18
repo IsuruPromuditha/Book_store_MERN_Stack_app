@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 const Register = () => {
 
   const [message , setMessage] = useState('');
-  const {registerUser}  = useAuth()
+  const {registerUser, signInWithGoogle}  = useAuth()
 
   const {
           register,
@@ -28,8 +28,15 @@ const Register = () => {
           }
         }
   
-        const handleGoogleSignIn = () => {
-          
+        const handleGoogleSignIn = async () => {
+          try {
+            await signInWithGoogle()
+            alert('Login successfull');
+            navigate('/')
+          } catch (error) {
+            setMessage("Google sign in failed")
+            console.error(error)
+          }
         }
 
   return (
